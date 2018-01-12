@@ -8,4 +8,3 @@ See https://github.com/mongo-express/mongo-express for installation instructions
 ## Current Status: Work In Progress
 
 This image is currently an experimental work in progress.
-.

@@ -25,8 +25,6 @@ class Test1and1MongoImage(unittest.TestCase):
             ports={8080:8080},
             working_dir="/var/www"
         )
-        import time
-        time.sleep(180)
 
         details = docker.APIClient().inspect_container(container=Test1and1MongoImage.container.id)
         Test1and1MongoImage.container_ip = details['NetworkSettings']['IPAddress']

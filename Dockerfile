@@ -13,7 +13,8 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
 	&& apt-get remove gnupg \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* && \
-    chmod 666 /etc/nginx/sites-enabled/site.conf
+    chmod 666 /etc/nginx/sites-enabled/site.conf && \
+	chmod -R 777 /etc/supervisor/conf.d
 
 ENV ME_CONFIG_MONGODB_ADMINUSERNAME="defaultadminuser" \
 	ME_CONFIG_MONGODB_ADMINPASSWORD="defaultadminpass" \

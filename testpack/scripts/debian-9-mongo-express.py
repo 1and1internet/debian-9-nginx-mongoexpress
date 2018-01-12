@@ -25,6 +25,8 @@ class Test1and1MongoImage(unittest.TestCase):
             ports={8080:8080},
             working_dir="/var/www"
         )
+        import time
+        time.sleep(180)
 
         details = docker.APIClient().inspect_container(container=Test1and1MongoImage.container.id)
         Test1and1MongoImage.container_ip = details['NetworkSettings']['IPAddress']
@@ -62,7 +64,6 @@ class Test1and1MongoImage(unittest.TestCase):
 
     def test_mongo_express_package(self):
         op = self.execRun("npm ls -g --depth=0 mongo-express")
-        print("TEST2", op)
         self.assertTrue(
             op.find("mongo-express") > -1,
             msg="mongo-express not installed"

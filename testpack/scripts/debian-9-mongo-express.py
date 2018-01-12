@@ -61,7 +61,10 @@ class Test1and1MongoImage(unittest.TestCase):
             )
 
     def test_mongo_express_package(self):
+        op = self.execRun("npm ls -g")
+        print("TEST1", op)
         op = self.execRun("npm ls -g --depth=0 mongo-express")
+        print("TEST2", op)
         self.assertTrue(
             op.find("mongo-express") > -1,
             msg="mongo-express not installed"

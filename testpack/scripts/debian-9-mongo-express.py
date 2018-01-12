@@ -4,7 +4,6 @@ import unittest
 import os
 import docker
 from selenium import webdriver
-import time
 
 
 class Test1and1MongoImage(unittest.TestCase):
@@ -29,8 +28,6 @@ class Test1and1MongoImage(unittest.TestCase):
 
         details = docker.APIClient().inspect_container(container=Test1and1MongoImage.container.id)
         Test1and1MongoImage.container_ip = details['NetworkSettings']['IPAddress']
-        time.sleep(1)
-        print(Test1and1MongoImage.container.logs().decode('utf-8'))
 
     @classmethod
     def tearDownClass(cls):
@@ -64,8 +61,6 @@ class Test1and1MongoImage(unittest.TestCase):
             )
 
     def test_mongo_express_package(self):
-        op = self.execRun("npm ls -g --depth=0")
-        print("TEST1", op)
         op = self.execRun("npm ls -g --depth=0 mongo-express")
         print("TEST2", op)
         self.assertTrue(

@@ -14,7 +14,8 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& chmod 666 /etc/nginx/sites-enabled/site.conf \
-	&& chmod -R 777 /etc/supervisor/conf.d
+	&& chmod -R 777 /etc/supervisor/conf.d \
+					/opt/templates
 
 ENV ME_CONFIG_MONGODB_ADMINUSERNAME="defaultadminuser" \
 	ME_CONFIG_MONGODB_ADMINPASSWORD="defaultadminpass" \

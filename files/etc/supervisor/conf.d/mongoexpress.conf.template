@@ -1,5 +1,5 @@
 [program:mongoexpress]
-command=/usr/bin/mongo-express
+command=/usr/bin/mongo-express -H <ME_CONFIG_MONGODB_SERVER>
 autostart=true
 autorestart=true
 startretries=3

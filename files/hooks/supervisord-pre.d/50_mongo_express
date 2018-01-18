@@ -18,7 +18,8 @@ fi
 
 if [ ! -z $ME_CONFIG_MONGODB_SERVER ]; then
     echo "Mongo db host is '$ME_CONFIG_MONGODB_SERVER' - enabling mongo express..."
-    sed "s/<ME_CONFIG_MONGODB_SERVER>/$ME_CONFIG_MONGODB_SERVER/" /etc/supervisor/conf.d/mongoexpress.conf.template > /etc/supervisor/conf.d/mongoexpress.conf
+    sed -i "s/process.env.ME_CONFIG_MONGODB_URL/$ME_CONFIG_MONGODB_SERVER/" /opt/templates/config.js
+    cp /etc/supervisor/conf.d/mongoexpress.conf.template /etc/supervisor/conf.d/mongoexpress.conf
 else
     echo "ME_CONFIG_MONGODB_SERVER not set - not enabling mongo express"
 fi

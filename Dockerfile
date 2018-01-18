@@ -3,7 +3,7 @@ MAINTAINER brian.wilkinson@1and1.co.uk
 COPY files/ /
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
 	&& apt-get update \
-	&& apt-get install -y gnupg curl \
+	&& apt-get install -y gnupg curl telnet \
 	&& curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 	&& apt-get install -y nodejs \
 	&& node -v \
@@ -20,4 +20,5 @@ ENV ME_CONFIG_MONGODB_ADMINUSERNAME="defaultadminuser" \
 	ME_CONFIG_MONGODB_ADMINPASSWORD="defaultadminpass" \
 	ME_CONFIG_MONGODB_ENABLE_ADMIN=true \
 	ME_CONFIG_BASICAUTH_USERNAME="baUser" \
-	ME_CONFIG_BASICAUTH_PASSWORD="baPass"
+	ME_CONFIG_BASICAUTH_PASSWORD="baPass" \
+	ME_CONFIG_MONGODB_AUTH_DATABASE=admin
